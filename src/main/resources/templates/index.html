@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>PROJEKT</title>
+        <meta name="description">
+        <link rel="stylesheet" th:href="@{/style.css}">
+    </head>
+    <body>
+
+        <div class = "content">
+            <div class = "middle">
+                <div class = "inputs">
+                    <h2>DODAJ LINK RSS LUB EMAIL</h2>
+                    <form th:action="@{/save}" method="post">
+                    <label>Linki RSS</label>
+                    <input type="url" name="link">
+                    <label>Email</label>
+                    <input type="email" name="email" th:value="${email}">
+                    <button>save</button>
+                    </form>
+                </div>
+                <div class ="list">
+                    <div class = "middlelist">
+                    <ol>
+                    <div th:each="r : ${lista}">
+                      <li th:text="${r.link}" ></li> <a th:href="@{'/delete/' + ${r.id}}">usuń</a>
+                    </div>
+                    </ol>
+                    </div>
+                </div>
+                <div class = "text">
+                    <div>
+                    <textarea></textarea>
+                    </div>
+                    <div>
+                    <button>send</button>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+		
+		
+    </body>
+</html>
