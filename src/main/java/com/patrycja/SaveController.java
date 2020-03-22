@@ -33,20 +33,22 @@ public class SaveController {
 			model.addAttribute("emptyemail", false);
 			model.addAttribute("email", emailM.getEmail());
 		}
-		System.out.println("msg: "+msg);
 		model.addAttribute("msg", msg);
 		model.addAttribute("linklist", linklist);
 		return "index";
 	}
 	
 	@PostMapping("/save")
-	public String save(String email, RssModel rssModel, RedirectAttributes ra) {
+	public String save(@RequestParam("email")String email, @RequestParam("link")String link, RedirectAttributes ra) {
 
+		System.out.println(email);
+		System.out.println(link);
 		EmailModel emailModel = emailRepo.findById(1l).orElse(null);
-		
+		 RssModel rssModel = new RssModel();
+		 rssModel.setLink(link);
 		if(emailModel == null) {
-			if(email == null || email.isBlank()) {
-				ra.addAttribute("msg", "Musisz podać email");
+			if(email == null || email.isEmpty()) {
+				ra.addAttribute("msg", "Musisz podać email!");
 				return "redirect:/";
 			}else {
 				emailRepo.save(new EmailModel(1l, email));
@@ -54,8 +56,8 @@ public class SaveController {
 			}
 		}
 		
-		if(rssModel.getLink().isBlank()) {
-			ra.addAttribute("msg", "Musisz link rss");
+		if(rssModel.getLink().isEmpty()) {
+			ra.addAttribute("msg", "Musisz podać link rss!");
 			return "redirect:/";
 		}
 		

@@ -1,7 +1,7 @@
 @charset "UTF-8";
 body { font-family: Avantgarde, sans-serif;     background-color: #d6fffc; color:#646464; }
 
-button{
+button, a{
     	box-shadow:inset 0px 1px 0px 0px #54a3f7;
 	background:linear-gradient(to bottom, #007dc1 5%, #0061a7 100%);
 	background-color:#007dc1;
@@ -23,6 +23,15 @@ button:active {
 	position:relative;
 	top:1px;
 }
+a:hover {
+	background:linear-gradient(to bottom, #0061a7 5%, #007dc1 100%);
+	background-color:#0061a7;
+}
+a:active {
+	position:relative;
+	top:1px;
+}
+
 input {
 border-radius: 4px;
 
@@ -51,5 +60,11 @@ border-radius: 4px;
     margin-right: 32%;
             background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(253,255,255,1) 0%, rgba(134,236,214,1) 100%);
     box-shadow: 5px 5px 10px
-
+}
+textarea{
+	width: 70%;
+}
+p{
+	color: red;
+	text-align: center;
 }

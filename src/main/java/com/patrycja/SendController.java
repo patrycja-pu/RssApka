@@ -48,16 +48,16 @@ public class SendController {
 				e.printStackTrace();
 			} 
 		}
-		System.out.println(content);
-		if(!content.isBlank()) {
+
+		if(!content.isEmpty()) {
 			content = "<html><body>" + content + "</body></html>";
 		
 			EmailSender m = new EmailSender(emailM.getEmail());
-//			try {
-//				m.sendEmail(content);
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			}
+			try {
+				m.sendEmail(content);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 		rssRepo.deleteAll();
 		emailRepo.deleteAll();
